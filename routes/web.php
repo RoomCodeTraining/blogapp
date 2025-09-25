@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'admin');
 
 Route::prefix('api')->group(function () {
     Route::get('posts', [PostController::class, 'index']);
