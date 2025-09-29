@@ -11,7 +11,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::query()
-            ->with(['categories:id,name,slug', 'user:id,name,email'])
+            ->with(['categories:id,name,slug'])
             ->latest('published_at')
             ->paginate(10);
 
@@ -21,7 +21,7 @@ class PostController extends Controller
     public function show(string $slug)
     {
         $post = Post::query()
-            ->with(['categories:id,name,slug', 'user:id,name,email'])
+            ->with(['categories:id,name,slug'])
             ->where('slug', $slug)
             ->firstOrFail();
 
